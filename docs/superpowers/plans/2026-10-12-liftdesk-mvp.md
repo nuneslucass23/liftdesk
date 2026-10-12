@@ -7,12 +7,11 @@ Leia antes o documento **`docs/superpowers/specs/2026-10-12-liftdesk-mvp-design.
 | Pessoa | Tela | Funções de `regras.js` | Fora do código |
 |---|---|---|---|
 | **P1 · Lucas** | Projeto base, `dados.js`, cabeçalho, Início, **Minhas tarefas** (técnico) e deploy | `tecnicoEstaLivre` | Cuidar do GitHub e ajudar nos merges |
-| **P2 · Pietro** | **Painel** | `estaAtrasada`, `ordenarPorGravidade` | Roteiro do vídeo |
-| **P3 · Erick** | **Nova ocorrência** | `calcularSeveridade`, `prazoEmMinutos` | PDF da entrega |
-| **P4 · Gabriel** | **Detalhe e despacho** | `sugerirTecnico` | Backlog com MoSCoW |
-| **P5 · João Victor** | **Alertas** | `gerarAlertas` | Gravação e edição do vídeo |
+| **P2 · Pietro** | **Painel** | `estaAtrasada`, `ordenarPorGravidade` | Roteiro do vídeo e backlog com MoSCoW |
+| **P3 e P4 · Erick** | **Nova ocorrência** e **Detalhe e despacho** | `calcularSeveridade`, `prazoEmMinutos`, `sugerirTecnico` | — |
+| **P5 · João Victor** | **Alertas** | `gerarAlertas` | Gravação e edição do vídeo e PDF da entrega |
 
-No resto do guia, P1 a P5 se referem a essas pessoas.
+No resto do guia, P1 a P5 se referem a essas pessoas. O Gabriel saiu da faculdade, e as partes dele (P4) foram redistribuídas. Ele não entra no PDF nem no grupo da entrega no FIAP ON.
 
 ## Cronograma
 
@@ -257,6 +256,6 @@ Teste no console com os dados de exemplo: deve sair pelo menos um alerta alto e 
   - **~2 min:** o sistema funcionando, seguindo o fluxo da seção 2 da especificação;
   - **~30 s:** os ganhos e o encerramento.
   - Publique no YouTube como **público**.
-- **PDF (P3):** nomes e RMs, nome do time, link do vídeo e link do deploy. **Em PDF, não em Word.**
+- **PDF (P5):** nomes e RMs, nome do time, link do vídeo e link do deploy. **Em PDF, não em Word.**
 - **ZIP:** o PDF e um zip do código **sem a pasta `node_modules`**.
 - **Antes de entregar:** todos rodam o checklist da seção 8 da especificação **no link publicado**.
