@@ -6,13 +6,13 @@ Leia antes o documento **`docs/superpowers/specs/2026-10-12-liftdesk-mvp-design.
 
 | Pessoa | Tela | Funções de `regras.js` | Fora do código |
 |---|---|---|---|
-| **P1** | Projeto base, `dados.js`, cabeçalho, Início, **Minhas tarefas** (técnico) e deploy | `tecnicoEstaLivre` | Cuidar do GitHub e ajudar nos merges |
-| **P2** | **Painel** | `estaAtrasada`, `ordenarPorGravidade` | Roteiro do vídeo |
-| **P3** | **Nova ocorrência** | `calcularSeveridade`, `prazoEmMinutos` | PDF da entrega |
-| **P4** | **Detalhe e despacho** | `sugerirTecnico` | Backlog com MoSCoW |
-| **P5** | **Alertas** | `gerarAlertas` | Gravação e edição do vídeo |
+| **P1 · Lucas** | Projeto base, `dados.js`, cabeçalho, Início, **Minhas tarefas** (técnico) e deploy | `tecnicoEstaLivre` | Cuidar do GitHub e ajudar nos merges |
+| **P2 · Pietro** | **Painel** | `estaAtrasada`, `ordenarPorGravidade` | Roteiro do vídeo |
+| **P3 · Erick** | **Nova ocorrência** | `calcularSeveridade`, `prazoEmMinutos` | PDF da entrega |
+| **P4 · Gabriel** | **Detalhe e despacho** | `sugerirTecnico` | Backlog com MoSCoW |
+| **P5 · João Victor** | **Alertas** | `gerarAlertas` | Gravação e edição do vídeo |
 
-Escrevam os nomes de vocês no lugar de P1 a P5.
+No resto do guia, P1 a P5 se referem a essas pessoas.
 
 ## Cronograma
 
