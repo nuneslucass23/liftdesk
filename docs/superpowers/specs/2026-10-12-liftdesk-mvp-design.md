@@ -1,170 +1,82 @@
-# LiftDesk — Design do MVP (Sprint 2 · Challenge OTIS · FIAP)
+# LiftDesk: o que vamos construir (Sprint 2, Challenge OTIS)
 
-**Data:** 12/10/2026 · **Grupo:** LiftDesk (5 integrantes) · **Entrega:** 10/11/2026 23h59 (meta interna: 09/11)
+**Entrega:** 10/11/2026 às 23h59. A meta do grupo é **09/11**.
 
-## 1. Objetivo
+## 1. A ideia em uma frase
 
-Construir um MVP web funcional do **LiftDesk**, plataforma de gestão de ocorrências de elevadores apresentada no pitch do 1º semestre, que permita à banca da OTIS e ao professor executar, pelo link publicado, o fluxo completo:
+Um site em que o **gestor** registra problemas em elevadores, o sistema diz **o quanto é grave** e **qual técnico mandar**, o **técnico** marca o atendimento e o sistema **avisa antes** dos elevadores que estão dando sinais de falha.
 
-> ocorrência registrada → classificada e priorizada automaticamente → gestor despacha o técnico sugerido → técnico atende e resolve → painel atualiza → alerta preditivo vira manutenção preventiva.
+## 2. O fluxo que precisa funcionar (é o que vai no vídeo)
 
-### Critérios de sucesso
-- O fluxo acima roda de ponta a ponta no deploy do GitHub Pages, sem erros, inclusive após recarregar a página (F5).
-- Interface intuitiva e responsiva (critério de 5 + 4,5 pontos de usabilidade).
-- O vídeo de até 3 minutos consegue demonstrar todo o fluxo.
+1. O gestor registra uma ocorrência, por exemplo "passageiro preso".
+2. O sistema classifica como **crítica**, que vai para o topo da lista.
+3. O gestor abre a ocorrência, vê o **técnico sugerido** e clica em **Despachar**.
+4. O técnico abre a tela dele, clica em **A caminho** e depois em **Resolvido**.
+5. O painel do gestor mostra a ocorrência como resolvida.
+6. Na tela de **Alertas**, o gestor vê um elevador em risco e clica em **Gerar manutenção preventiva**.
 
-### Requisitos da entrega (FIAP)
-- MVP funcional (15 pts), deploy (5 pts), vídeo pitch ≤ 3 min com demonstração (5 pts).
-- Um `.zip` contendo: PDF (integrantes, nome do time, link do vídeo, link do deploy) + `.zip` com o código.
-- Tecnologias do curso até a Fase 7; para o MVP outras tecnologias são permitidas.
+## 3. O que fica de fora
+Login com senha, servidor, banco de dados, mapa, inteligência artificial de verdade e perfil de cliente.
 
-## 2. Escopo
+## 4. Tecnologias (todas vistas no curso)
+- **React com Vite**: componentes, `useState`, props e `.map()`.
+- **React Router**: `createHashRouter`. O curso ensinou `createBrowserRouter`, que funciona do mesmo jeito, mas quebra no GitHub Pages quando alguém aperta F5.
+- **Bootstrap 5**: cards, tabelas, formulários, badges e alertas.
+- **JSON** para os dados iniciais e **`localStorage`** para guardar as mudanças.
+- **GitHub Pages** para publicar.
 
-### Dentro
-- Dois perfis, sem senha: **Gestor** (central de operações) e **Técnico de campo**.
-- 5 telas + entrada "Entrar como" (seção 4).
-- Classificação, prioridade, prazo (SLA), sugestão de técnico e alertas preditivos por **regras** (seção 6).
-- Dados iniciais em JSON, persistência em `localStorage`, botão **Reiniciar demonstração**.
+## 5. Telas
 
-### Fora (não fazer)
-- Backend, banco de dados, autenticação real, notificações push, mapa, IA/ML real, perfil de cliente/síndico, multi-idioma.
-
-## 3. Stack
-
-| Item | Escolha | Observação |
+| Tela | Endereço | Quem usa |
 |---|---|---|
-| Base | React + Vite | Ensinado (F5 cap 6, F6 cap 4) |
-| Rotas | React Router DOM com **`createHashRouter`** | O curso ensina `createBrowserRouter`; no GitHub Pages ele quebra no F5 |
-| Visual | Bootstrap 5 | Ensinado (F3, F4, F5) |
-| Estado | `useState` + `useEffect` + Context | Context é o único item além do básico |
-| Persistência | `localStorage` | JavaScript puro |
-| Testes | Vitest (só regras) | Ferramenta de desenvolvimento |
-| Deploy | GitHub Pages via pacote `gh-pages` | `npm run deploy` |
+| Início | `/` | Todos. Dois botões: **Sou gestor** e **Sou técnico** |
+| Painel | `/gestor` | Gestor |
+| Nova ocorrência | `/gestor/nova` | Gestor |
+| Detalhe e despacho | `/gestor/ocorrencia/:id` | Gestor |
+| Alertas | `/gestor/alertas` | Gestor |
+| Minhas tarefas | `/tecnico` | Técnico (escolhe o nome numa lista) |
 
-## 4. Telas
+O cabeçalho, que aparece em todas as telas, tem: o nome LiftDesk, links para as telas e o botão **Reiniciar demonstração**.
 
-Cabeçalho comum: nome LiftDesk, perfil atual, "Trocar perfil", "Reiniciar demonstração" e menu de navegação do perfil.
+## 6. Dados
 
-| # | Rota | Perfil | Conteúdo |
-|---|---|---|---|
-| 0 | `/` | todos | **Entrar como**: botão Gestor + lista de técnicos |
-| 1 | `/gestor` | Gestor | **Painel**: cards (abertas, críticas, em atendimento, resolvidas hoje); lista de ocorrências ordenada por prioridade com filtros por status e severidade; resumo dos alertas preditivos |
-| 2 | `/gestor/nova` | Gestor | **Nova ocorrência**: formulário (elevador, tipo, descrição, passageiro preso?) com validação; mostra a severidade calculada em tempo real |
-| 3 | `/gestor/ocorrencia/:id` | Gestor | **Detalhe e despacho**: dados, técnico sugerido + prazo calculado, troca manual de técnico, botão **Confirmar despacho**, histórico |
-| 4 | `/gestor/alertas` | Gestor | **Alertas preditivos**: elevadores em risco com nível, motivo e botão **Gerar manutenção preventiva** |
-| 5 | `/tecnico` | Técnico | **Minhas tarefas**: ocorrências atribuídas; botões Aceitar → A caminho → Resolvido (resolver exige observação) |
-| — | `*` | todos | **Não encontrado** com link de volta |
-
-O técnico é redirecionado se tentar abrir rotas `/gestor/*` e vice-versa.
-
-## 5. Arquitetura e dados
-
-```
-src/
-  main.jsx               rotas (createHashRouter) + DadosProvider
-  App.jsx                layout: cabeçalho + <Outlet/>
-  contexto/DadosContext.jsx
-  dados/elevadores.json  dados/tecnicos.json  dados/ocorrencias.json
-  regras/classificar.js  regras/prazo.js  regras/sugerirTecnico.js  regras/preditivo.js
-  regras/*.test.js
-  paginas/Entrar.jsx  Painel.jsx  NovaOcorrencia.jsx  DetalheOcorrencia.jsx  Alertas.jsx  MinhasTarefas.jsx  NaoEncontrado.jsx
-  componentes/           peças reutilizáveis (Cabecalho, SeloSeveridade, CartaoIndicador...)
+**elevadores.json**: `id`, `predio`, `regiao`, `eventos`. Cada evento tem `tipo` e `diasAtras`.
+```json
+{ "id": "E03", "predio": "Torre Vila Olímpia", "regiao": "Sul",
+  "eventos": [ { "tipo": "porta", "diasAtras": 1 }, { "tipo": "porta", "diasAtras": 3 } ] }
 ```
 
-### DadosContext (fonte única dos dados)
-- Estado: `elevadores`, `tecnicos`, `ocorrencias`, `alertasTratados`, `perfil`.
-- Ao iniciar: lê o `localStorage` (chave `liftdesk-dados`); se não houver ou estiver inválido, carrega os JSON iniciais.
-- A cada mudança, grava no `localStorage` (`useEffect`).
-- Ações expostas: `entrar(perfil)`, `sair()`, `criarOcorrencia(dados)`, `despachar(id, tecnicoId)`, `atualizarStatus(id, novoStatus, observacao?)`, `gerarPreventiva(alerta)`, `reiniciarDemo()`.
-- **Telas nunca alteram dados diretamente**: sempre chamam uma ação. Regras nunca são reimplementadas nas telas: sempre importadas de `regras/`.
+**tecnicos.json**: `id`, `nome`, `regiao`.
 
-### Modelos
-- **Elevador**: `id`, `predio`, `endereco`, `regiao` (Norte, Sul, Leste, Oeste, Centro), `modelo`, `anoInstalacao`, `eventos[]` com `{ tipo: porta | vibracao | nivelamento | energia | ruido, diasAtras }`.
-- **Técnico**: `id`, `nome`, `regiao`, `especialidades[]` (mesmos tipos dos eventos + `resgate`).
-- **Ocorrência**: `id`, `elevadorId`, `tipo` (passageiro_preso, falha_tecnica, falta_energia, ruido_anormal, solicitacao_cliente, preventiva), `descricao`, `passageiroPreso`, `severidade`, `status`, `tecnicoId`, `criadaEm`, `prazoLimite`, `historico[]` com `{ status, quando, por }`, `observacao`, `origem` (manual | alerta).
-- **Status**: `aberta → despachada → aceita → a_caminho → resolvida` (sem pular etapas).
-- **Técnico ocupado** = tem ocorrência com status `despachada`, `aceita` ou `a_caminho`.
-- **Dados iniciais**: cerca de 12 elevadores em 6 prédios, 5 técnicos (1 ou 2 por região), cerca de 10 ocorrências em status variados, com pelo menos 2 elevadores que já disparam alertas. Datas sempre relativas ao dia atual (`diasAtras`, minutos atrás) para a demo nunca envelhecer.
+**ocorrencias.json**: `id`, `elevadorId`, `tipo`, `descricao`, `passageiroPreso`, `severidade`, `status`, `tecnicoId`, `minutosAtras`.
 
-## 6. Regras de negócio (funções puras)
+- **Tipos de ocorrência:** `passageiro_preso`, `falha_tecnica`, `falta_energia`, `ruido`, `pedido_cliente`, `preventiva`.
+- **Status:** `aberta` → `despachada` → `a_caminho` → `resolvida`.
+- Quando os dados são carregados, `minutosAtras` vira `criadaEm` (horário em milissegundos). Assim a demonstração sempre parece recente.
 
-### 6.1 `classificar(ocorrencia) → severidade` (P3)
-| Condição (avaliada nesta ordem) | Severidade |
+Tudo fica num objeto só, guardado no `localStorage`:
+```js
+{ elevadores: [...], tecnicos: [...], ocorrencias: [...], alertasTratados: [] }
+```
+
+## 7. Regras (todas no arquivo `src/regras.js`)
+
+| Regra | Como funciona |
 |---|---|
-| `passageiroPreso === true` | critica |
-| tipo `falta_energia` ou `falha_tecnica` | alta |
-| tipo `ruido_anormal` | media |
-| tipo `solicitacao_cliente` ou `preventiva` | baixa |
+| **Severidade** | passageiro preso → `critica`; falta de energia ou falha técnica → `alta`; ruído → `media`; o resto → `baixa` |
+| **Prazo** | crítica 30 min, alta 120 min, média 480 min, baixa 2880 min. Se o prazo passou e não está resolvida, a ocorrência está **ATRASADA** |
+| **Técnico livre** | é o técnico que não tem nenhuma ocorrência `despachada` ou `a_caminho` |
+| **Técnico sugerido** | o primeiro técnico livre da **mesma região** do elevador. Se não tiver, o primeiro livre de qualquer região. Se ninguém estiver livre, não há sugestão |
+| **Alerta preditivo** | contar os eventos de cada tipo nos últimos 7 dias. Com **3 ou mais**, gera alerta; com **5 ou mais**, o risco é **alto**, senão é **médio**. Alertas que já viraram preventiva não aparecem mais |
 
-**Ordenação da lista**: severidade (crítica > alta > média > baixa), depois `criadaEm` mais antiga primeiro. Resolvidas vão para o fim.
-
-### 6.2 `calcularPrazo(severidade, criadaEm) → prazoLimite` e `situacaoPrazo(ocorrencia, agora)` (P4)
-- Crítica 30 min · Alta 2 h · Média 8 h · Baixa 48 h.
-- `situacaoPrazo` devolve `{ restanteMin, atrasada }`; a tela mostra o tempo restante ou o selo **ATRASADA**.
-
-### 6.3 `sugerirTecnico(ocorrencia, elevador, tecnicos, ocorrencias) → { tecnico, aviso }` (P4)
-1. Candidatos = técnicos livres.
-2. Preferir mesma região do elevador **e** especialidade compatível (passageiro preso → `resgate`; falta de energia → `energia`; demais → qualquer).
-3. Empate: menos ocorrências resolvidas hoje (equilíbrio de carga); depois ordem alfabética.
-4. Se ninguém da região: melhor técnico livre de outra região + aviso "fora da região".
-5. Se ninguém livre: `{ tecnico: null, aviso: "Nenhum técnico disponível" }` e o despacho fica bloqueado.
-
-### 6.4 `gerarAlertas(elevadores, alertasTratados) → alertas[]` (P5)
-- Janela: eventos com `diasAtras <= 7`.
-- Por elevador e por tipo de evento: 3–4 ocorrências → risco **médio**; 5 ou mais → risco **alto**.
-- Se o elevador tiver risco médio ou alto em **2 tipos diferentes**, o risco final é **alto**.
-- Cada alerta: `{ id, elevadorId, tipo, quantidade, risco, motivo }`, com motivo legível, por exemplo "5 anomalias de porta nos últimos 7 dias".
-- Alertas cujo `id` está em `alertasTratados` não aparecem.
-- `gerarPreventiva` cria ocorrência `preventiva` (baixa, origem `alerta`) e adiciona o id em `alertasTratados`.
-
-## 7. Tratamento de erros
-- `localStorage` ausente ou JSON inválido → recarrega os dados iniciais (sem tela quebrada).
-- Formulário: validação Bootstrap; descrição com no mínimo 10 caracteres; botão desativado enquanto inválido.
-- Sem técnico disponível → aviso + despacho bloqueado.
-- Transição de status inválida → ação ignora e não altera dados.
-- Rota inexistente → página Não encontrado. Perfil errado → redireciona.
-
-## 8. Testes
-- **Automatizados (Vitest)**: cada arquivo de `regras/` tem de 3 a 5 casos, incluindo os limites (3 vs 2 eventos; 5 vs 4; ninguém livre; fora da região; prazo estourado).
-- **Checklist manual da demo** (rodar no link publicado antes de cada entrega):
-  1. Entrar como Gestor → painel com dados.
-  2. Nova ocorrência com passageiro preso → aparece como crítica no topo.
-  3. Abrir e despachar o técnico sugerido.
-  4. Trocar para o técnico → Aceitar → A caminho → Resolvido com observação.
-  5. Voltar ao gestor → painel atualizado.
-  6. Alertas → Gerar preventiva → some do painel de alertas e vira ocorrência.
-  7. F5 em qualquer tela → nada se perde e nada quebra.
-  8. Reiniciar demonstração → volta ao estado inicial.
-  9. Celular (largura de 375px) → layout utilizável.
-
-## 9. Deploy
-- Repositório no GitHub, nome `liftdesk`; `vite.config.js` com `base: '/liftdesk/'`.
-- Scripts: `"predeploy": "npm run build"`, `"deploy": "gh-pages -d dist"`.
-- Primeiro deploy na semana 1, com a base vazia; publicar novamente a cada merge relevante na `main`.
-
-## 10. Divisão e fluxo de trabalho
-
-| Pessoa | Responsabilidade |
-|---|---|
-| P1 | Projeto Vite, rotas, layout/cabeçalho, DadosContext, JSON iniciais, tela Entrar, reiniciar demo, deploy; depois **Minhas tarefas** (técnico); revisa PRs |
-| P2 | Painel do gestor |
-| P3 | Nova ocorrência + `classificar.js` |
-| P4 | Detalhe e despacho + `prazo.js` + `sugerirTecnico.js` |
-| P5 | Alertas + `preditivo.js` |
-
-- Uma branch por tela ou regra (`feat/painel`, `feat/regra-prazo`...), pull request para a `main` e revisão da P1.
-- Mudanças no `DadosContext` ou nos JSON precisam ser combinadas com o grupo antes.
-
-## 11. Cronograma
-
-| Semana | Meta |
-|---|---|
-| 1 · 12–18/10 | P1: base + Context + rotas + **deploy no ar**. P3, P4, P5: regras + testes. P2: layout do painel com dados fixos. Grupo: backlog MoSCoW. |
-| 2 · 19–25/10 | Telas ligadas ao Context; **fluxo do gestor de ponta a ponta**. |
-| 3 · 26/10–01/11 | Tela do técnico, alertas, acabamento visual e responsivo. **Congelar funcionalidades em 01/11.** |
-| 4 · 02–09/11 | Correções; roteiro e gravação do vídeo (perto de 3 min, com demo); PDF; ZIP. **Entregar em 09/11.** |
-
-## 12. Riscos
-- **Integrantes com pouco React**: as regras são JS puro (dá para começar sem React); a P1 entrega a base e os exemplos cedo.
-- **Conflitos de Git**: Context centralizado, uma tela por pessoa e PRs pequenos.
-- **Deploy quebrado na véspera**: deploy desde a semana 1 + checklist da seção 8.
+## 8. Como saber que está pronto
+Rodar este checklist **no link publicado**:
+1. Sou gestor → o painel aparece com dados.
+2. Nova ocorrência com passageiro preso → aparece **Crítica** no topo.
+3. Abrir → técnico sugerido → Despachar.
+4. Sou técnico → escolher o técnico → A caminho → Resolvido.
+5. O painel do gestor mostra a ocorrência resolvida.
+6. Alertas → Gerar preventiva → o alerta some e a preventiva aparece no painel.
+7. Apertar F5 em qualquer tela → nada se perde.
+8. Reiniciar demonstração → tudo volta ao começo.
+9. No celular a tela fica utilizável.
