@@ -22,7 +22,18 @@ export function tecnicoEstaLivre(tecnicoId, ocorrencias) {
 }
 
 // Lucas: devolve o técnico livre do mesmo estado; senão, o primeiro livre; senão, null
-export function sugerirTecnico(elevador, tecnicos, ocorrencias) { }
+export function sugerirTecnico(elevador, tecnicos, ocorrencias) {
+    //1. apenas tecnicos livres
+    const livres = tecnicos.filter((t) => tecnicoEstaLivre(t.id, ocorrencias))
+
+    //2. um livre do mesmo estado do elevador 
+    const mesmoEstado = livres.find((t) => t.estado === elevador.estado)
+    if (mesmoEstado) return mesmoEstado
+
+    //3. senao, o primeiro livre; se nao houver ninguem, null
+    if (livres.length === 0) return null
+    return livres[0]
+}
 
 // João Victor: devolve a lista de alertas (3+ eventos do mesmo tipo em 7 dias)
 export function gerarAlertas(elevadores, alertasTratados) { }
