@@ -6,9 +6,9 @@ Leia antes o documento **`docs/superpowers/specs/2026-10-12-liftdesk-mvp-design.
 
 | Pessoa | Tela | Funções de `regras.js` | Fora do código |
 |---|---|---|---|
-| **P1 · Lucas** | Projeto base, `dados.js`, cabeçalho, Início, **Minhas tarefas** (técnico) e deploy | `tecnicoEstaLivre` | Cuidar do GitHub e ajudar nos merges |
+| **P1 · Lucas** | Projeto base, `dados.js`, cabeçalho, Início, **Minhas tarefas** (técnico) e deploy | `tecnicoEstaLivre`, `sugerirTecnico` | Cuidar do GitHub e ajudar nos merges |
 | **P2 · Pietro** | **Painel** | `estaAtrasada`, `ordenarPorGravidade` | Roteiro do vídeo e backlog com MoSCoW |
-| **P3 e P4 · Erick** | **Nova ocorrência** e **Detalhe e despacho** | `calcularSeveridade`, `prazoEmMinutos`, `sugerirTecnico` | — |
+| **P3 e P4 · Erick** | **Nova ocorrência** e **Detalhe e despacho** | `calcularSeveridade`, `prazoEmMinutos` (a tela de Detalhe usa a `sugerirTecnico` do Lucas) | — |
 | **P5 · João Victor** | **Alertas** | `gerarAlertas` | Gravação e edição do vídeo e PDF da entrega |
 
 No resto do guia, P1 a P5 se referem a essas pessoas. O Gabriel saiu da faculdade, e as partes dele (P4) foram redistribuídas. Ele não entra no PDF nem no grupo da entrega no FIAP ON.
@@ -99,7 +99,7 @@ export function prazoEmMinutos(severidade) {}                    // P3
 export function estaAtrasada(ocorrencia) {}                      // P2
 export function ordenarPorGravidade(ocorrencias) {}              // P2
 export function tecnicoEstaLivre(tecnicoId, ocorrencias) {}      // P1
-export function sugerirTecnico(elevador, tecnicos, ocorrencias) {} // P4
+export function sugerirTecnico(elevador, tecnicos, ocorrencias) {} // P1
 export function gerarAlertas(elevadores, alertasTratados) {}     // P5
 ```
 
@@ -195,8 +195,8 @@ const nova = {
 
 ## P4: Detalhe e despacho (`/gestor/ocorrencia/:id`)
 
-### Sua função em `regras.js`
-**`sugerirTecnico(elevador, tecnicos, ocorrencias)`**:
+### A função que esta tela usa: `sugerirTecnico` (feita pelo Lucas, P1)
+**`sugerirTecnico(elevador, tecnicos, ocorrencias)`** devolve o técnico sugerido, ou `null`. Como ela funciona:
 1. Monte a lista de técnicos livres com `tecnicoEstaLivre` (função da P1).
 2. Procure nessa lista alguém do **mesmo estado** do elevador (`t.estado === elevador.estado`) (`.find()`). Se achar, devolva essa pessoa.
 3. Se não achar, devolva o primeiro livre (`livres[0]`) e mostre o aviso "Técnico de fora do estado".
