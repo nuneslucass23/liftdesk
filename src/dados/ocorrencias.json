@@ -1,0 +1,122 @@
+[
+    {
+        "id": "OC-001",
+        "elevadorId": "E1",
+        "tipo": "passageiro_preso",
+        "descricao": "Passageiro preso no elevador do Edifício Copacabana.",
+        "passageiroPreso": true,
+        "severidade": "critica",
+        "status": "aberta",
+        "tecnicoId": null,
+        "minutosAtras": 5,
+        "observacao": ""
+    },
+    {
+        "id": "OC-002",
+        "elevadorId": "E3",
+        "tipo": "falha_tecnica",
+        "descricao": "Elevador parado no térreo com erro no painel de comando.",
+        "passageiroPreso": false,
+        "severidade": "alta",
+        "status": "aberta",
+        "tecnicoId": null,
+        "minutosAtras": 30,
+        "observacao": ""
+    },
+    {
+        "id": "OC-003",
+        "elevadorId": "E6",
+        "tipo": "falha_tecnica",
+        "descricao": "Porta não fecha completamente no 5º andar.",
+        "passageiroPreso": false,
+        "severidade": "alta",
+        "status": "aberta",
+        "tecnicoId": null,
+        "minutosAtras": 180,
+        "observacao": ""
+    },
+    {
+        "id": "OC-004",
+        "elevadorId": "E7",
+        "tipo": "ruido",
+        "descricao": "Ruído metálico forte ao passar pelo 8º andar.",
+        "passageiroPreso": false,
+        "severidade": "media",
+        "status": "aberta",
+        "tecnicoId": null,
+        "minutosAtras": 60,
+        "observacao": ""
+    },
+    {
+        "id": "OC-005",
+        "elevadorId": "E9",
+        "tipo": "pedido_cliente",
+        "descricao": "Síndico pede revisão do botão de chamada do 10º andar.",
+        "passageiroPreso": false,
+        "severidade": "baixa",
+        "status": "aberta",
+        "tecnicoId": null,
+        "minutosAtras": 200,
+        "observacao": ""
+    },
+    {
+        "id": "OC-006",
+        "elevadorId": "E3",
+        "tipo": "falta_energia",
+        "descricao": "Queda de energia no prédio; elevador desligado no 2º andar, sem passageiros.",
+        "passageiroPreso": false,
+        "severidade": "alta",
+        "status": "a_caminho",
+        "tecnicoId": "T3",
+        "minutosAtras": 45,
+        "observacao": ""
+    },
+    {
+        "id": "OC-007",
+        "elevadorId": "E2",
+        "tipo": "falha_tecnica",
+        "descricao": "Elevador desnivelado cerca de 5 cm no térreo.",
+        "passageiroPreso": false,
+        "severidade": "alta",
+        "status": "despachada",
+        "tecnicoId": "T2",
+        "minutosAtras": 20,
+        "observacao": ""
+    },
+    {
+        "id": "OC-008",
+        "elevadorId": "E4",
+        "tipo": "ruido",
+        "descricao": "Barulho na porta ao abrir no 2º andar.",
+        "passageiroPreso": false,
+        "severidade": "media",
+        "status": "despachada",
+        "tecnicoId": "T4",
+        "minutosAtras": 90,
+        "observacao": ""
+    },
+    {
+        "id": "OC-009",
+        "elevadorId": "E5",
+        "tipo": "falha_tecnica",
+        "descricao": "Vibração forte durante a subida.",
+        "passageiroPreso": false,
+        "severidade": "alta",
+        "status": "resolvida",
+        "tecnicoId": "T5",
+        "minutosAtras": 300,
+        "observacao": "Coxins do motor substituídos e elevador testado."
+    },
+    {
+        "id": "OC-010",
+        "elevadorId": "E10",
+        "tipo": "ruido",
+        "descricao": "Chiado no cabo ao descer do último andar.",
+        "passageiroPreso": false,
+        "severidade": "media",
+        "status": "resolvida",
+        "tecnicoId": "T10",
+        "minutosAtras": 400,
+        "observacao": "Cabos lubrificados; sem ruído após o teste."
+    }
+]

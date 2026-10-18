@@ -1,0 +1,180 @@
+[
+    {
+        "id": "E1",
+        "predio": "Edifício Copacabana",
+        "estado": "RJ",
+        "eventos": [
+            {
+                "tipo": "porta",
+                "diasAtras": 1
+            },
+            {
+                "tipo": "vibracao",
+                "diasAtras": 2
+            }
+        ]
+    },
+    {
+        "id": "E2",
+        "predio": "Edifício Paulista",
+        "estado": "SP",
+        "eventos": [
+            {
+                "tipo": "porta",
+                "diasAtras": 1
+            },
+            {
+                "tipo": "porta",
+                "diasAtras": 2
+            },
+            {
+                "tipo": "porta",
+                "diasAtras": 3
+            },
+            {
+                "tipo": "porta",
+                "diasAtras": 5
+            },
+            {
+                "tipo": "porta",
+                "diasAtras": 6
+            }
+        ]
+    },
+    {
+        "id": "E3",
+        "predio": "Edifício Vitória",
+        "estado": "ES",
+        "eventos": [
+            {
+                "tipo": "porta",
+                "diasAtras": 1
+            },
+            {
+                "tipo": "ruido",
+                "diasAtras": 2
+            }
+        ]
+    },
+    {
+        "id": "E4",
+        "predio": "Edifício Manaus",
+        "estado": "AM",
+        "eventos": [
+            {
+                "tipo": "nivelamento",
+                "diasAtras": 1
+            },
+            {
+                "tipo": "vibracao",
+                "diasAtras": 2
+            }
+        ]
+    },
+    {
+        "id": "E5",
+        "predio": "Edifício Salvador",
+        "estado": "BA",
+        "eventos": [
+            {
+                "tipo": "porta",
+                "diasAtras": 1
+            },
+            {
+                "tipo": "vibracao",
+                "diasAtras": 1
+            },
+            {
+                "tipo": "vibracao",
+                "diasAtras": 3
+            },
+            {
+                "tipo": "vibracao",
+                "diasAtras": 6
+            }
+        ]
+    },
+    {
+        "id": "E6",
+        "predio": "Edifício Goiânia",
+        "estado": "GO",
+        "eventos": [
+            {
+                "tipo": "ruido",
+                "diasAtras": 1
+            },
+            {
+                "tipo": "porta",
+                "diasAtras": 2
+            }
+        ]
+    },
+    {
+        "id": "E7",
+        "predio": "Edifício Brasília",
+        "estado": "DF",
+        "eventos": [
+            {
+                "tipo": "porta",
+                "diasAtras": 1
+            },
+            {
+                "tipo": "nivelamento",
+                "diasAtras": 2
+            }
+        ]
+    },
+    {
+        "id": "E8",
+        "predio": "Edifício Natal",
+        "estado": "RN",
+        "eventos": [
+            {
+                "tipo": "energia",
+                "diasAtras": 1
+            },
+            {
+                "tipo": "ruido",
+                "diasAtras": 9
+            },
+            {
+                "tipo": "ruido",
+                "diasAtras": 10
+            },
+            {
+                "tipo": "ruido",
+                "diasAtras": 12
+            }
+        ]
+    },
+    {
+        "id": "E9",
+        "predio": "Edifício Porto Alegre",
+        "estado": "RS",
+        "eventos": [
+            {
+                "tipo": "porta",
+                "diasAtras": 1
+            },
+            {
+                "tipo": "porta",
+                "diasAtras": 2
+            }
+        ]
+    },
+    {
+        "id": "E10",
+        "predio": "Edifício Florianópolis",
+        "estado": "SC",
+        "eventos": [
+            {
+                "tipo": "energia",
+                "diasAtras": 1
+            },
+            {
+                "tipo": "porta",
+                "diasAtras": 2
+            }
+        ]
+    }
+]

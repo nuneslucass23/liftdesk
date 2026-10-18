@@ -1,0 +1,52 @@
+[
+    {
+        "id": "T1",
+        "nome": "João Silva",
+        "estado": "RJ"
+    },
+    {
+        "id": "T2",
+        "nome": "Pedro Almeida",
+        "estado": "SP"
+    },
+    {
+        "id": "T3",
+        "nome": "Carlos Santos",
+        "estado": "ES"
+    },
+    {
+        "id": "T4",
+        "nome": "Fernando Lima",
+        "estado": "AM"
+    },
+    {
+        "id": "T5",
+        "nome": "Ricardo Oliveira",
+        "estado": "BA"
+    },
+    {
+        "id": "T6",
+        "nome": "Julio Costa",
+        "estado": "GO"
+    },
+    {
+        "id": "T7",
+        "nome": "Rafael Souza",
+        "estado": "DF"
+    },
+    {
+        "id": "T8",
+        "nome": "Paulo Martins",
+        "estado": "RN"
+    },
+    {
+        "id": "T9",
+        "nome": "Lucas Pereira",
+        "estado": "RS"
+    },
+    {
+        "id": "T10",
+        "nome": "Camilo Rodrigues",
+        "estado": "SC"
+    }
+]
