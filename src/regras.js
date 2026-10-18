@@ -14,7 +14,12 @@ export function estaAtrasada(ocorrencia) { }
 export function ordenarPorGravidade(ocorrencias) { }
 
 // Lucas: devolve true se o técnico não tem nenhuma ocorrência 'despachada' ou 'a_caminho'
-export function tecnicoEstaLivre(tecnicoId, ocorrencias) { }
+export function tecnicoEstaLivre(tecnicoId, ocorrencias) {
+    const emAndamento = ocorrencias.filter((o) =>
+        o.tecnicoId === tecnicoId && (o.status === 'despachada' || o.status === 'a_caminho')
+    )
+    return emAndamento.length === 0
+}
 
 // Lucas: devolve o técnico livre do mesmo estado; senão, o primeiro livre; senão, null
 export function sugerirTecnico(elevador, tecnicos, ocorrencias) { }
