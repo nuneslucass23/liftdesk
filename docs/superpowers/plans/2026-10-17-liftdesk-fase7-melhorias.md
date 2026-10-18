@@ -75,7 +75,7 @@ const { register, handleSubmit, watch, formState: { errors } } = useForm({
 
 Uma tela nova em `/gestor/elevadores/novo`, com um link no cabeçalho: **"Cadastrar elevador"**. Hoje os elevadores existem só no JSON. Com essa tela, o gestor cadastra prédios novos, e o endereço vem da API ViaCEP.
 
-**Campos:** prédio, CEP, rua, bairro, cidade (preenchidos pela API), número, região (um `<select>` com Norte, Sul, Leste, Oeste e Centro) e modelo do elevador.
+**Campos:** prédio, CEP, rua, bairro, cidade (preenchidos pela API), número, estado (preenchido pela API com `data.uf`; precisa ser um dos 10 estados atendidos) e modelo do elevador.
 
 **Busca do CEP no `onBlur`** (igual ao cap. 5):
 ```js
@@ -94,6 +94,7 @@ function buscarCep(evento) {
       setValue('rua', data.logradouro)
       setValue('bairro', data.bairro)
       setValue('cidade', data.localidade)
+      setValue('estado', data.uf)
       setFocus('numero')
     })
     .catch(() => setErroCep('Não deu para buscar o CEP agora. Preencha o endereço à mão.'))
@@ -101,6 +102,7 @@ function buscarCep(evento) {
 ```
 
 **Três cuidados que a banca pode testar:**
+- **CEP de um estado que não atendemos** (ex.: um CEP de MG): mostre "Ainda não atendemos esse estado" e não deixe salvar, porque não há técnico lá.
 1. **CEP que não existe** (ex.: `00000000`): a API responde `{ erro: true }`, não dá erro. Por isso o `if (data.erro)`.
 2. **Sem internet:** cai no `.catch`. Os campos continuam editáveis, para o gestor preencher à mão.
 3. **CEP com traço ou ponto:** o `replace(/\D/g, '')` limpa antes de buscar.
@@ -109,14 +111,14 @@ function buscarCep(evento) {
 ```js
 const novo = {
   id: 'E' + Date.now(),
-  predio, regiao, modelo,
+  predio, estado, modelo,
   endereco: `${rua}, ${numero} · ${bairro} · ${cidade}`,
   eventos: [],
 }
 ```
 Ele já aparece no `<select>` da Nova ocorrência, porque ela também lê `dados.elevadores`.
 
-**Validação:** use react-hook-form + yup do mesmo jeito da M1 (prédio, CEP com 8 números, número e região obrigatórios). Combine com o Erick para os dois formulários ficarem parecidos.
+**Validação:** use react-hook-form + yup do mesmo jeito da M1 (prédio, CEP com 8 números, número e estado obrigatórios). Combine com o Erick para os dois formulários ficarem parecidos.
 
 **Conferir:**
 - O CEP `01310-100` preenche a Av. Paulista.
@@ -134,9 +136,9 @@ Feitos no **Astah**, como no curso. Exporte como imagem e salve em `docs/diagram
 
 | Classe | Atributos | Relacionamentos |
 |---|---|---|
-| `Elevador` | id, predio, endereco, regiao, modelo | tem 0..* `Evento` (**composição**: o evento não existe sem o elevador) |
+| `Elevador` | id, predio, endereco, estado, modelo | tem 0..* `Evento` (**composição**: o evento não existe sem o elevador) |
 | `Evento` | tipo, diasAtras | — |
-| `Tecnico` | id, nome, regiao | atende 0..* `Ocorrencia` |
+| `Tecnico` | id, nome, estado | atende 0..* `Ocorrencia` |
 | `Ocorrencia` | id, tipo, descricao, passageiroPreso, severidade, status, criadaEm | pertence a 1 `Elevador`; pode ter 0..1 `Tecnico` |
 | `Alerta` | id, tipo, quantidade, risco | refere-se a 1 `Elevador`; pode gerar 0..1 `Ocorrencia` preventiva |
 

@@ -44,11 +44,12 @@ npm install -D gh-pages
 Apague os arquivos de exemplo, como no capítulo 4 da Fase 6.
 
 ### 2. Arquivos de dados em `src/dados/`
-Crie `elevadores.json` (12 elevadores em 6 prédios), `tecnicos.json` (5 técnicos, um por região: Norte, Sul, Leste, Oeste e Centro) e `ocorrencias.json` (umas 10 ocorrências em status variados). **Garanta que os dados de exemplo incluam:**
+Crie `elevadores.json` (12 elevadores em 6 prédios, só nos 10 estados dos técnicos), `tecnicos.json` (10 técnicos, um por estado: RJ, SP, ES, AM, BA, GO, DF, RN, RS, SC; campo `estado` com a sigla) e `ocorrencias.json` (umas 10 ocorrências em status variados). **Garanta que os dados de exemplo incluam:**
 - pelo menos 1 elevador com **5 eventos de porta** nos últimos 7 dias, para dar alerta **alto**;
 - pelo menos 1 elevador com **3 eventos** do mesmo tipo, para dar alerta **médio**;
 - uma ocorrência **aberta com passageiro preso**, para a demonstração;
-- **2 técnicos livres** e 3 ocupados.
+- **alguns técnicos ocupados** (uns 3) e o resto livre;
+- pelo menos 1 elevador num estado cujo técnico esteja **ocupado**, para mostrar o aviso "fora do estado".
 
 ### 3. `src/dados.js`: ler, salvar e reiniciar
 ```js
@@ -197,21 +198,21 @@ const nova = {
 ### Sua função em `regras.js`
 **`sugerirTecnico(elevador, tecnicos, ocorrencias)`**:
 1. Monte a lista de técnicos livres com `tecnicoEstaLivre` (função da P1).
-2. Procure nessa lista alguém da **mesma região** do elevador (`.find()`). Se achar, devolva essa pessoa.
-3. Se não achar, devolva o primeiro livre (`livres[0]`).
+2. Procure nessa lista alguém do **mesmo estado** do elevador (`t.estado === elevador.estado`) (`.find()`). Se achar, devolva essa pessoa.
+3. Se não achar, devolva o primeiro livre (`livres[0]`) e mostre o aviso "Técnico de fora do estado".
 4. Se a lista estiver vazia, devolva `null`.
 
 ### O que a tela mostra
 - Pegue o id da URL com `const { id } = useParams()` e encontre a ocorrência com `.find()`. Se não existir, mostre "Ocorrência não encontrada" e um link para o painel.
-- Um card com: prédio, região, tipo, descrição, severidade (badge), status, horário de abertura (`new Date(criadaEm).toLocaleString('pt-BR')`) e o selo ATRASADA.
+- Um card com: prédio, estado, tipo, descrição, severidade (badge), status, horário de abertura (`new Date(criadaEm).toLocaleString('pt-BR')`) e o selo ATRASADA.
 - **Se o status for `aberta`**, um card **Despacho**:
-  - "Técnico sugerido: **Nome** (região)";
+  - "Técnico sugerido: **Nome** (estado)";
   - um `<select>` para trocar o técnico, só com os livres e com o sugerido já selecionado;
   - o botão **Despachar**, que muda o status para `despachada` e grava o `tecnicoId`, usando o mesmo padrão `.map()` da P1;
   - se não houver técnico livre: aviso "Nenhum técnico disponível" e botão desativado.
 - **Se não for `aberta`**: mostre quem é o técnico responsável e, se estiver resolvida, a observação.
 
-**Conferir:** a ocorrência com passageiro preso sugere o técnico livre da mesma região. Depois de despachar, ela aparece na tela do técnico.
+**Conferir:** a ocorrência com passageiro preso sugere o técnico livre do mesmo estado. Depois de despachar, ela aparece na tela do técnico.
 
 ---
 

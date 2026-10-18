@@ -40,13 +40,13 @@ O cabeçalho, que aparece em todas as telas, tem: o nome LiftDesk, links para as
 
 ## 6. Dados
 
-**elevadores.json**: `id`, `predio`, `regiao`, `eventos`. Cada evento tem `tipo` e `diasAtras`.
+**elevadores.json**: `id`, `predio`, `estado` (sigla da UF), `eventos`. Cada evento tem `tipo` e `diasAtras`.
 ```json
-{ "id": "E03", "predio": "Torre Vila Olímpia", "regiao": "Sul",
+{ "id": "E03", "predio": "Torre Vila Olímpia", "estado": "SP",
   "eventos": [ { "tipo": "porta", "diasAtras": 1 }, { "tipo": "porta", "diasAtras": 3 } ] }
 ```
 
-**tecnicos.json**: `id`, `nome`, `regiao`.
+**tecnicos.json**: `id`, `nome`, `estado`. A demonstração usa 10 estados (RJ, SP, ES, AM, BA, GO, DF, RN, RS, SC), com um técnico em cada; elevadores só nesses estados.
 
 **ocorrencias.json**: `id`, `elevadorId`, `tipo`, `descricao`, `passageiroPreso`, `severidade`, `status`, `tecnicoId`, `minutosAtras`.
 
@@ -66,7 +66,7 @@ Tudo fica num objeto só, guardado no `localStorage`:
 | **Severidade** | passageiro preso → `critica`; falta de energia ou falha técnica → `alta`; ruído → `media`; o resto → `baixa` |
 | **Prazo** | crítica 30 min, alta 120 min, média 480 min, baixa 2880 min. Se o prazo passou e não está resolvida, a ocorrência está **ATRASADA** |
 | **Técnico livre** | é o técnico que não tem nenhuma ocorrência `despachada` ou `a_caminho` |
-| **Técnico sugerido** | o primeiro técnico livre da **mesma região** do elevador. Se não tiver, o primeiro livre de qualquer região. Se ninguém estiver livre, não há sugestão |
+| **Técnico sugerido** | o técnico livre do **mesmo estado** do elevador. Se não tiver, o primeiro livre de qualquer estado, com o aviso "fora do estado". Se ninguém estiver livre, não há sugestão |
 | **Alerta preditivo** | contar os eventos de cada tipo nos últimos 7 dias. Com **3 ou mais**, gera alerta; com **5 ou mais**, o risco é **alto**, senão é **médio**. Alertas que já viraram preventiva não aparecem mais |
 
 ## 8. Como saber que está pronto
