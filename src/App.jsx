@@ -1,9 +1,17 @@
+import { Outlet } from 'react-router-dom'
+
 function App() {
   return (
-    <div className="container py-4">
-      <h1>LiftDesk</h1>
-      <p className="text-secondary">Gestão de ocorrências de elevadores</p>
-    </div>
+    <>
+      <header className="bg-dark text-white py-3 mb-4">
+        <div className="container">
+          <strong>LiftDesk</strong>
+        </div>
+      </header>
+      <main className="container pb-5">
+        <Outlet />
+      </main>
+    </>
   )
 }
 
