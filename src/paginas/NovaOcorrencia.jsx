@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useForm, useWatch } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 import { lerDados, salvarDados } from '../dados.js'
 import { calcularSeveridade, prazoEmMinutos } from '../regras.js'
 
@@ -18,36 +21,58 @@ const nomesSeveridade = {
     baixa: 'Baixa',
 }
 
+// as regras de validação do formulário
+const schema = yup.object({
+    elevadorId: yup.string().required('Escolha o elevador.'),
+    tipo: yup.string().required('Escolha o tipo da ocorrência.'),
+    descricao: yup
+        .string()
+        .trim()
+        .required('Descreva o problema.')
+        .min(10, 'Descreva com pelo menos 10 letras.'),
+    passageiroPreso: yup.boolean(),
+})
+
+// monta a ocorrência nova com os valores do formulário (só roda quando clica em Registrar)
+function montarOcorrencia(valores) {
+    const agora = Date.now()
+
+    return {
+        id: 'OC-' + agora,
+        elevadorId: valores.elevadorId,
+        tipo: valores.tipo,
+        descricao: valores.descricao,
+        passageiroPreso: valores.passageiroPreso,
+        severidade: calcularSeveridade(valores.tipo, valores.passageiroPreso),
+        status: 'aberta',
+        tecnicoId: null,
+        criadaEm: agora,
+        observacao: '',
+    }
+}
+
 function NovaOcorrencia() {
     const [dados, setDados] = useState(lerDados)
-    const [elevadorId, setElevadorId] = useState('')
-    const [tipo, setTipo] = useState('')
-    const [passageiroPreso, setPassageiroPreso] = useState(false)
-    const [descricao, setDescricao] = useState('')
     const navigate = useNavigate()
 
+    const { register, handleSubmit, control, formState: { errors } } = useForm({
+        resolver: yupResolver(schema),
+        defaultValues: {
+            elevadorId: '',
+            tipo: '',
+            descricao: '',
+            passageiroPreso: false,
+        },
+    })
+
+    // lê o tipo e a caixa em tempo real, para mostrar a classificação enquanto preenche
+    const tipo = useWatch({ control, name: 'tipo' })
+    const passageiroPreso = useWatch({ control, name: 'passageiroPreso' })
     const severidade = calcularSeveridade(tipo, passageiroPreso)
-    const prazo = prazoEmMinutos(severidade)
-    const descricaoValida = descricao.trim().length >= 10
-    const formularioValido = elevadorId !== '' && tipo !== '' && descricaoValida
+    const mostrarClassificacao = tipo !== '' || passageiroPreso
 
-    function registrarOcorrencia(evento) {
-        evento.preventDefault()
-        if (!formularioValido) return
-
-        const nova = {
-            id: 'OC-' + Date.now(),
-            elevadorId,
-            tipo,
-            descricao: descricao.trim(),
-            passageiroPreso,
-            severidade: calcularSeveridade(tipo, passageiroPreso),
-            status: 'aberta',
-            tecnicoId: null,
-            criadaEm: Date.now(),
-            observacao: '',
-        }
-
+    function registrar(valores) {
+        const nova = montarOcorrencia(valores)
         const novosDados = {
             ...dados,
             ocorrencias: [...dados.ocorrencias, nova],
@@ -62,16 +87,17 @@ function NovaOcorrencia() {
         <div className="mx-auto" style={{ maxWidth: '720px' }}>
             <h1 className="mb-4">Nova ocorrência</h1>
 
-            <form onSubmit={registrarOcorrencia}>
+            <form onSubmit={handleSubmit(registrar)} noValidate>
                 <div className="card">
                     <div className="card-body">
                         <div className="mb-3">
                             <label className="form-label" htmlFor="elevador">Elevador</label>
                             <select
-                                className="form-select"
+                                className={'form-select' + (errors.elevadorId ? ' is-invalid' : '')}
                                 id="elevador"
-                                value={elevadorId}
-                                onChange={(evento) => setElevadorId(evento.target.value)}
+                                aria-invalid={errors.elevadorId ? 'true' : 'false'}
+                                aria-describedby="elevador-erro"
+                                {...register('elevadorId')}
                             >
                                 <option value="">Selecione um elevador</option>
                                 {dados.elevadores.map((elevador) => (
@@ -80,15 +106,19 @@ function NovaOcorrencia() {
                                     </option>
                                 ))}
                             </select>
+                            <span id="elevador-erro" className="text-danger small">
+                                {errors.elevadorId?.message}
+                            </span>
                         </div>
 
                         <div className="mb-3">
                             <label className="form-label" htmlFor="tipo">Tipo</label>
                             <select
-                                className="form-select"
+                                className={'form-select' + (errors.tipo ? ' is-invalid' : '')}
                                 id="tipo"
-                                value={tipo}
-                                onChange={(evento) => setTipo(evento.target.value)}
+                                aria-invalid={errors.tipo ? 'true' : 'false'}
+                                aria-describedby="tipo-erro"
+                                {...register('tipo')}
                             >
                                 <option value="">Selecione o tipo</option>
                                 {tipos.map((item) => (
@@ -97,6 +127,9 @@ function NovaOcorrencia() {
                                     </option>
                                 ))}
                             </select>
+                            <span id="tipo-erro" className="text-danger small">
+                                {errors.tipo?.message}
+                            </span>
                         </div>
 
                         <div className="form-check mb-3">
@@ -104,8 +137,7 @@ function NovaOcorrencia() {
                                 className="form-check-input"
                                 type="checkbox"
                                 id="passageiroPreso"
-                                checked={passageiroPreso}
-                                onChange={(evento) => setPassageiroPreso(evento.target.checked)}
+                                {...register('passageiroPreso')}
                             />
                             <label className="form-check-label" htmlFor="passageiroPreso">
                                 Há passageiro preso?
@@ -115,29 +147,30 @@ function NovaOcorrencia() {
                         <div className="mb-3">
                             <label className="form-label" htmlFor="descricao">Descrição</label>
                             <textarea
-                                className="form-control"
+                                className={'form-control' + (errors.descricao ? ' is-invalid' : '')}
                                 id="descricao"
                                 rows="4"
-                                value={descricao}
-                                onChange={(evento) => setDescricao(evento.target.value)}
-                                aria-describedby="descricao-ajuda"
+                                aria-invalid={errors.descricao ? 'true' : 'false'}
+                                aria-describedby="descricao-ajuda descricao-erro"
+                                {...register('descricao')}
                             />
                             <div id="descricao-ajuda" className="form-text">
                                 Informe pelo menos 10 letras.
                             </div>
+                            <span id="descricao-erro" className="text-danger small">
+                                {errors.descricao?.message}
+                            </span>
                         </div>
 
                         <p className="alert alert-secondary mb-0">
-                            Classificação automática: {nomesSeveridade[severidade]} · prazo de {prazo} min
+                            {mostrarClassificacao
+                                ? `Classificação automática: ${nomesSeveridade[severidade]} · prazo de ${prazoEmMinutos(severidade)} min`
+                                : 'Escolha o tipo para ver a classificação automática.'}
                         </p>
                     </div>
                 </div>
 
-                <button
-                    className="btn btn-primary mt-3"
-                    type="submit"
-                    disabled={!formularioValido}
-                >
+                <button className="btn btn-primary mt-3" type="submit">
                     Registrar
                 </button>
             </form>
