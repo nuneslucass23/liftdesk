@@ -2,10 +2,30 @@
 // cada integrante do grupo preenche apenas as suas funções. NÃO MUDE NOMES NEM PARÂMETROS
 
 // Erick: devolve 'critica', 'alta', 'media' ou 'baixa'
-export function calcularSeveridade(tipo, passageiroPreso) { }
+export function calcularSeveridade(tipo, passageiroPreso) {
+    if (passageiroPreso === true) {
+        return 'critica'
+    }
+    if (tipo === 'passageiro_preso') {
+        return 'critica'
+    }
+    if (tipo === 'falha_tecnica' || tipo === 'falta_energia') {
+        return 'alta'
+    }
+    if (tipo === 'ruido') {
+        return 'media'
+    }
+    return 'baixa'
+}
 
 // Erick: devolve o prazo em minutos (30, 120, 480 ou 2880)
-export function prazoEmMinutos(severidade) { }
+export function prazoEmMinutos(severidade) {
+    if (severidade === 'critica') return 30
+    if (severidade === 'alta') return 120
+    if (severidade === 'media') return 480
+    if (severidade === 'baixa') return 2880
+    return 2880
+}
 
 // Pietro: devolve true se passou do prazo e não está resolvida
 export function estaAtrasada(ocorrencia) { }
