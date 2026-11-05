@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1010" width="1400" height="1010" font-family="Helvetica, Arial, sans-serif"><rect width="1400" height="1010" fill="#fff"/><defs>
+<marker id="aberta" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L11 6 L1 11" fill="none" stroke="#1c252c" stroke-width="1.4"/></marker>
+<marker id="cheia" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L11 6 L1 11 z" fill="#1c252c"/></marker>
+<marker id="losango" markerWidth="20" markerHeight="12" refX="1" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 6 L9 1 L17 6 L9 11 z" fill="#1c252c"/></marker>
+</defs>
+<text x="40" y="30" font-size="20" font-weight="700" text-anchor="start" fill="#1c252c">LiftDesk: diagrama de classes</text>
+<rect x="40" y="50" width="1320" height="120" fill="#f5f6f7" stroke="#7b8791" stroke-width="1.2"/>
+<path d="M40 50 h105 v18 l-10 10 h-95 z" fill="#e6e9ec" stroke="#7b8791" stroke-width="1.2"/>
+<text x="50" y="69" font-size="14" font-weight="700" text-anchor="start" fill="#1c252c">Fronteira</text>
+<rect x="70" y="92" width="195" height="46" fill="#ffffff" stroke="#1c252c" stroke-width="1.4"/>
+<rect x="70.7" y="92.7" width="193.6" height="44.6" fill="#e6e9ec"/>
+<text x="167.5" y="110" font-size="12" font-weight="400" text-anchor="middle" fill="#5b6670">«boundary»</text>
+<text x="167.5" y="129" font-size="15" font-weight="700" text-anchor="middle" fill="#1c252c">TelaInicio</text>
+<rect x="285" y="92" width="195" height="46" fill="#ffffff" stroke="#1c252c" stroke-width="1.4"/>
+<rect x="285.7" y="92.7" width="193.6" height="44.6" fill="#e6e9ec"/>
+<text x="382.5" y="110" font-size="12" font-weight="400" text-anchor="middle" fill="#5b6670">«boundary»</text>
+<text x="382.5" y="129" font-size="15" font-weight="700" text-anchor="middle" fill="#1c252c">TelaPainel</text>
+<rect x="500" y="92" width="195" height="46" fill="#ffffff" stroke="#1c252c" stroke-width="1.4"/>
+<rect x="500.7" y="92.7" width="193.6" height="44.6" fill="#e6e9ec"/>
+<text x="597.5" y="110" font-size="12" font-weight="400" text-anchor="middle" fill="#5b6670">«boundary»</text>
+<text x="597.5" y="129" font-size="15" font-weight="700" text-anchor="middle" fill="#1c252c">TelaNovaOcorrencia</text>
+<rect x="715" y="92" width="195" height="46" fill="#ffffff" stroke="#1c252c" stroke-width="1.4"/>
+<rect x="715.7" y="92.7" width="193.6" height="44.6" fill="#e6e9ec"/>
+<text x="812.5" y="110" font-size="12" font-weight="400" text-anchor="middle" fill="#5b6670">«boundary»</text>
+<text x="812.5" y="129" font-size="15" font-weight="700" text-anchor="middle" fill="#1c252c">TelaDetalhe</text>
+<rect x="930" y="92" width="195" height="46" fill="#ffffff" stroke="#1c252c" stroke-width="1.4"/>
+<rect x="930.7" y="92.7" width="193.6" height="44.6" fill="#e6e9ec"/>
+<text x="1027.5" y="110" font-size="12" font-weight="400" text-anchor="middle" fill="#5b6670">«boundary»</text>
+<text x="1027.5" y="129" font-size="15" font-weight="700" text-anchor="middle" fill="#1c252c">TelaAlertas</text>
+<rect x="1145" y="92" width="195" height="46" fill="#ffffff" stroke="#1c252c" stroke-width="1.4"/>
+<rect x="1145.7" y="92.7" width="193.6" height="44.6" fill="#e6e9ec"/>
+<text x="1242.5" y="110" font-size="12" font-weight="400" text-anchor="middle" fill="#5b6670">«boundary»</text>
+<text x="1242.5" y="129" font-size="15" font-weight="700" text-anchor="middle" fill="#1c252c">TelaMinhasTarefas</text>
+<rect x="40" y="240" width="1320" height="270" fill="#f5f6f7" stroke="#7b8791" stroke-width="1.2"/>
+<path d="M40 240 h96 v18 l-10 10 h-86 z" fill="#e6e9ec" stroke="#7b8791" stroke-width="1.2"/>
+<text x="50" y="259" font-size="14" font-weight="700" text-anchor="start" fill="#1c252c">Controle</text>
+<rect x="70" y="285" width="800" height="208" fill="#ffffff" stroke="#1c252c" stroke-width="1.4"/>
+<rect x="70.7" y="285.7" width="798.6" height="44.6" fill="#e6e9ec"/>
+<text x="470.0" y="303" font-size="12" font-weight="400" text-anchor="middle" fill="#5b6670">«control»</text>
+<text x="470.0" y="322" font-size="15" font-weight="700" text-anchor="middle" fill="#1c252c">Regras</text>
+<line x1="70" y1="331" x2="870" y2="331" stroke="#1c252c" stroke-width="1.4"/>
+<text x="80" y="352" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+calcularSeveridade(tipo: String, passageiroPreso: Boolean): String</text>
+<text x="80" y="374" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+prazoEmMinutos(severidade: String): Number</text>
+<text x="80" y="396" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+estaAtrasada(ocorrencia: Ocorrencia): Boolean</text>
+<text x="80" y="418" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+ordenarPorGravidade(ocorrencias: Ocorrencia[]): Ocorrencia[]</text>
+<text x="80" y="440" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+tecnicoEstaLivre(tecnicoId: String, ocorrencias: Ocorrencia[]): Boolean</text>
+<text x="80" y="462" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+sugerirTecnico(elevador: Elevador, tecnicos: Tecnico[], ocorrencias: Ocorrencia[]): Tecnico</text>
+<text x="80" y="484" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+gerarAlertas(elevadores: Elevador[], alertasTratados: String[]): Alerta[]</text>
+<rect x="950" y="285" width="340" height="120" fill="#ffffff" stroke="#1c252c" stroke-width="1.4"/>
+<rect x="950.7" y="285.7" width="338.6" height="44.6" fill="#e6e9ec"/>
+<text x="1120.0" y="303" font-size="12" font-weight="400" text-anchor="middle" fill="#5b6670">«control»</text>
+<text x="1120.0" y="322" font-size="15" font-weight="700" text-anchor="middle" fill="#1c252c">Dados</text>
+<line x1="950" y1="331" x2="1290" y2="331" stroke="#1c252c" stroke-width="1.4"/>
+<text x="960" y="352" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+lerDados(): Object</text>
+<text x="960" y="374" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+salvarDados(dados: Object): void</text>
+<text x="960" y="396" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+reiniciarDados(): Object</text>
+<line x1="470" y1="170" x2="470" y2="285" stroke="#1c252c" stroke-width="1.4" stroke-dasharray="7 5" marker-end="url(#aberta)"/>
+<text x="480" y="212" font-size="13" font-weight="400" text-anchor="start" fill="#5b6670">«usa»</text>
+<line x1="1120" y1="170" x2="1120" y2="285" stroke="#1c252c" stroke-width="1.4" stroke-dasharray="7 5" marker-end="url(#aberta)"/>
+<text x="1130" y="212" font-size="13" font-weight="400" text-anchor="start" fill="#5b6670">«usa»</text>
+<line x1="470" y1="510" x2="470" y2="580" stroke="#1c252c" stroke-width="1.4" stroke-dasharray="7 5" marker-end="url(#aberta)"/>
+<text x="480" y="548" font-size="13" font-weight="400" text-anchor="start" fill="#5b6670">«usa»</text>
+<line x1="1120" y1="510" x2="1120" y2="580" stroke="#1c252c" stroke-width="1.4" stroke-dasharray="7 5" marker-end="url(#aberta)"/>
+<text x="1130" y="548" font-size="13" font-weight="400" text-anchor="start" fill="#5b6670">«usa»</text>
+<rect x="40" y="580" width="1320" height="400" fill="#f5f6f7" stroke="#7b8791" stroke-width="1.2"/>
+<path d="M40 580 h96 v18 l-10 10 h-86 z" fill="#e6e9ec" stroke="#7b8791" stroke-width="1.2"/>
+<text x="50" y="599" font-size="14" font-weight="700" text-anchor="start" fill="#1c252c">Entidade</text>
+<rect x="70" y="630" width="210" height="120" fill="#ffffff" stroke="#1c252c" stroke-width="1.4"/>
+<rect x="70.7" y="630.7" width="208.6" height="44.6" fill="#e6e9ec"/>
+<text x="175.0" y="648" font-size="12" font-weight="400" text-anchor="middle" fill="#5b6670">«entity»</text>
+<text x="175.0" y="667" font-size="15" font-weight="700" text-anchor="middle" fill="#1c252c">Tecnico</text>
+<line x1="70" y1="676" x2="280" y2="676" stroke="#1c252c" stroke-width="1.4"/>
+<text x="80" y="697" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+id: String</text>
+<text x="80" y="719" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+nome: String</text>
+<text x="80" y="741" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+estado: String</text>
+<rect x="420" y="630" width="300" height="230" fill="#ffffff" stroke="#1c252c" stroke-width="1.4"/>
+<rect x="420.7" y="630.7" width="298.6" height="44.6" fill="#e6e9ec"/>
+<text x="570.0" y="648" font-size="12" font-weight="400" text-anchor="middle" fill="#5b6670">«entity»</text>
+<text x="570.0" y="667" font-size="15" font-weight="700" text-anchor="middle" fill="#1c252c">Ocorrencia</text>
+<line x1="420" y1="676" x2="720" y2="676" stroke="#1c252c" stroke-width="1.4"/>
+<text x="430" y="697" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+id: String</text>
+<text x="430" y="719" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+tipo: String</text>
+<text x="430" y="741" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+descricao: String</text>
+<text x="430" y="763" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+passageiroPreso: Boolean</text>
+<text x="430" y="785" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+severidade: String</text>
+<text x="430" y="807" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+status: String</text>
+<text x="430" y="829" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+criadaEm: Number</text>
+<text x="430" y="851" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+observacao: String</text>
+<rect x="860" y="630" width="190" height="120" fill="#ffffff" stroke="#1c252c" stroke-width="1.4"/>
+<rect x="860.7" y="630.7" width="188.6" height="44.6" fill="#e6e9ec"/>
+<text x="955.0" y="648" font-size="12" font-weight="400" text-anchor="middle" fill="#5b6670">«entity»</text>
+<text x="955.0" y="667" font-size="15" font-weight="700" text-anchor="middle" fill="#1c252c">Elevador</text>
+<line x1="860" y1="676" x2="1050" y2="676" stroke="#1c252c" stroke-width="1.4"/>
+<text x="870" y="697" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+id: String</text>
+<text x="870" y="719" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+predio: String</text>
+<text x="870" y="741" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+estado: String</text>
+<rect x="1150" y="630" width="180" height="98" fill="#ffffff" stroke="#1c252c" stroke-width="1.4"/>
+<rect x="1150.7" y="630.7" width="178.6" height="44.6" fill="#e6e9ec"/>
+<text x="1240.0" y="648" font-size="12" font-weight="400" text-anchor="middle" fill="#5b6670">«entity»</text>
+<text x="1240.0" y="667" font-size="15" font-weight="700" text-anchor="middle" fill="#1c252c">Evento</text>
+<line x1="1150" y1="676" x2="1330" y2="676" stroke="#1c252c" stroke-width="1.4"/>
+<text x="1160" y="697" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+tipo: String</text>
+<text x="1160" y="719" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+diasAtras: Number</text>
+<rect x="860" y="810" width="270" height="142" fill="#ffffff" stroke="#1c252c" stroke-width="1.4"/>
+<rect x="860.7" y="810.7" width="268.6" height="44.6" fill="#e6e9ec"/>
+<text x="995.0" y="828" font-size="12" font-weight="400" text-anchor="middle" fill="#5b6670">«entity»</text>
+<text x="995.0" y="847" font-size="15" font-weight="700" text-anchor="middle" fill="#1c252c">Alerta</text>
+<line x1="860" y1="856" x2="1130" y2="856" stroke="#1c252c" stroke-width="1.4"/>
+<text x="870" y="877" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+id: String</text>
+<text x="870" y="899" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+tipo: String</text>
+<text x="870" y="921" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+quantidade: Number</text>
+<text x="870" y="943" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">+risco: String</text>
+<line x1="280" y1="690" x2="420" y2="690" stroke="#1c252c" stroke-width="1.4"/>
+<text x="350" y="682" font-size="13" font-weight="400" text-anchor="middle" fill="#5b6670">atende</text>
+<text x="288" y="682" font-size="13" font-weight="400" text-anchor="start" fill="#1c252c">0..1</text>
+<text x="412" y="682" font-size="13" font-weight="400" text-anchor="end" fill="#1c252c">0..*</text>
+<line x1="720" y1="690" x2="860" y2="690" stroke="#1c252c" stroke-width="1.4"/>
+<text x="790" y="682" font-size="13" font-weight="400" text-anchor="middle" fill="#5b6670">pertence a</text>
+<text x="728" y="682" font-size="13" font-weight="400" text-anchor="start" fill="#1c252c">0..*</text>
+<text x="852" y="682" font-size="13" font-weight="400" text-anchor="end" fill="#1c252c">1</text>
+<line x1="1150" y1="690" x2="1067" y2="690" stroke="#1c252c" stroke-width="1.4"/>
+<line x1="1050" y1="690" x2="1051" y2="690" stroke="#1c252c" stroke-width="1.4" marker-end="url(#losango)"/>
+<text x="1100" y="682" font-size="13" font-weight="400" text-anchor="middle" fill="#5b6670">tem</text>
+<text x="1072" y="710" font-size="13" font-weight="400" text-anchor="start" fill="#1c252c">1</text>
+<text x="1142" y="710" font-size="13" font-weight="400" text-anchor="end" fill="#1c252c">0..*</text>
+<line x1="720" y1="840" x2="860" y2="840" stroke="#1c252c" stroke-width="1.4"/>
+<text x="790" y="832" font-size="13" font-weight="400" text-anchor="middle" fill="#5b6670">gera</text>
+<text x="728" y="832" font-size="13" font-weight="400" text-anchor="start" fill="#1c252c">0..1</text>
+<text x="852" y="832" font-size="13" font-weight="400" text-anchor="end" fill="#1c252c">0..1</text>
+<line x1="955" y1="750" x2="955" y2="810" stroke="#1c252c" stroke-width="1.4"/>
+<text x="965" y="785" font-size="13" font-weight="400" text-anchor="start" fill="#5b6670">refere-se a</text>
+<text x="945" y="768" font-size="13" font-weight="400" text-anchor="end" fill="#1c252c">1</text>
+<text x="945" y="802" font-size="13" font-weight="400" text-anchor="end" fill="#1c252c">0..*</text>
+</svg>
