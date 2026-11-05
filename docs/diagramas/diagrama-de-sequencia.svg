@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 860" width="1220" height="860" font-family="Helvetica, Arial, sans-serif"><rect width="1220" height="860" fill="#fff"/><defs>
+<marker id="aberta" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L11 6 L1 11" fill="none" stroke="#1c252c" stroke-width="1.4"/></marker>
+<marker id="cheia" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L11 6 L1 11 z" fill="#1c252c"/></marker>
+<marker id="losango" markerWidth="20" markerHeight="12" refX="1" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 6 L9 1 L17 6 L9 11 z" fill="#1c252c"/></marker>
+</defs>
+<text x="40" y="30" font-size="20" font-weight="700" text-anchor="start" fill="#1c252c">LiftDesk: diagrama de sequência, caso de uso Despachar ocorrência</text>
+<circle cx="110" cy="66" r="10" fill="#fff" stroke="#1c252c" stroke-width="1.4"/>
+<line x1="110" y1="76" x2="110" y2="100" stroke="#1c252c" stroke-width="1.4"/>
+<line x1="94" y1="86" x2="126" y2="86" stroke="#1c252c" stroke-width="1.4"/>
+<line x1="110" y1="100" x2="97" y2="118" stroke="#1c252c" stroke-width="1.4"/>
+<line x1="110" y1="100" x2="123" y2="118" stroke="#1c252c" stroke-width="1.4"/>
+<text x="110" y="136" font-size="14" font-weight="700" text-anchor="middle" fill="#1c252c">Gestor</text>
+<rect x="295" y="74" width="170" height="38" fill="#e6e9ec" stroke="#1c252c" stroke-width="1.4"/>
+<text x="380" y="99" font-size="15" font-weight="700" text-anchor="middle" fill="#1c252c">TelaDetalhe</text>
+<rect x="675" y="74" width="170" height="38" fill="#e6e9ec" stroke="#1c252c" stroke-width="1.4"/>
+<text x="760" y="99" font-size="15" font-weight="700" text-anchor="middle" fill="#1c252c">Regras</text>
+<rect x="1005" y="74" width="170" height="38" fill="#e6e9ec" stroke="#1c252c" stroke-width="1.4"/>
+<text x="1090" y="99" font-size="15" font-weight="700" text-anchor="middle" fill="#1c252c">Dados</text>
+<line x1="110" y1="144" x2="110" y2="838" stroke="#7b8791" stroke-width="1.4" stroke-dasharray="6 5"/>
+<line x1="380" y1="144" x2="380" y2="838" stroke="#7b8791" stroke-width="1.4" stroke-dasharray="6 5"/>
+<line x1="760" y1="144" x2="760" y2="838" stroke="#7b8791" stroke-width="1.4" stroke-dasharray="6 5"/>
+<line x1="1090" y1="144" x2="1090" y2="838" stroke="#7b8791" stroke-width="1.4" stroke-dasharray="6 5"/>
+<line x1="110" y1="184" x2="380" y2="184" stroke="#1c252c" stroke-width="1.4" marker-end="url(#cheia)"/>
+<text x="245.0" y="177" font-size="13.5" font-weight="400" text-anchor="middle" fill="#1c252c">abre a ocorrência (id)</text>
+<line x1="380" y1="232" x2="1090" y2="232" stroke="#1c252c" stroke-width="1.4" marker-end="url(#cheia)"/>
+<text x="570.0" y="225" font-size="13.5" font-weight="400" text-anchor="middle" fill="#1c252c">lerDados()</text>
+<line x1="1090" y1="276" x2="380" y2="276" stroke="#1c252c" stroke-width="1.4" stroke-dasharray="7 5" marker-end="url(#aberta)"/>
+<text x="570.0" y="269" font-size="13.5" font-weight="400" text-anchor="middle" fill="#1c252c">dados</text>
+<line x1="380" y1="324" x2="760" y2="324" stroke="#1c252c" stroke-width="1.4" marker-end="url(#cheia)"/>
+<text x="570.0" y="317" font-size="13.5" font-weight="400" text-anchor="middle" fill="#1c252c">sugerirTecnico(elevador, tecnicos, ocorrencias)</text>
+<path d="M760 350 h44 v24 h-42" fill="none" stroke="#1c252c" stroke-width="1.4" marker-end="url(#cheia)"/>
+<text x="812" y="366" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">tecnicoEstaLivre(tecnicoId, ocorrencias)</text>
+<line x1="760" y1="416" x2="380" y2="416" stroke="#1c252c" stroke-width="1.4" stroke-dasharray="7 5" marker-end="url(#aberta)"/>
+<text x="570.0" y="409" font-size="13.5" font-weight="400" text-anchor="middle" fill="#1c252c">técnico sugerido ou null</text>
+<rect x="50" y="456" width="1120" height="350" fill="none" stroke="#1c252c" stroke-width="1.3"/>
+<path d="M50 456 h52 v16 l-10 10 h-42 z" fill="#e6e9ec" stroke="#1c252c" stroke-width="1.3"/>
+<text x="60" y="474" font-size="14" font-weight="700" text-anchor="start" fill="#1c252c">alt</text>
+<text x="116" y="476" font-size="13.5" font-weight="700" text-anchor="start" fill="#1c252c">[há técnico livre]</text>
+<line x1="380" y1="514" x2="110" y2="514" stroke="#1c252c" stroke-width="1.4" stroke-dasharray="7 5" marker-end="url(#aberta)"/>
+<text x="245.0" y="507" font-size="13.5" font-weight="400" text-anchor="middle" fill="#1c252c">mostra o técnico sugerido</text>
+<line x1="110" y1="560" x2="380" y2="560" stroke="#1c252c" stroke-width="1.4" marker-end="url(#cheia)"/>
+<text x="245.0" y="553" font-size="13.5" font-weight="400" text-anchor="middle" fill="#1c252c">clica em Despachar</text>
+<path d="M380 584 h44 v24 h-42" fill="none" stroke="#1c252c" stroke-width="1.4" marker-end="url(#cheia)"/>
+<text x="432" y="600" font-size="13.5" font-weight="400" text-anchor="start" fill="#1c252c">status = &#x27;despachada&#x27;, tecnicoId</text>
+<line x1="380" y1="646" x2="1090" y2="646" stroke="#1c252c" stroke-width="1.4" marker-end="url(#cheia)"/>
+<text x="570.0" y="639" font-size="13.5" font-weight="400" text-anchor="middle" fill="#1c252c">salvarDados(novosDados)</text>
+<line x1="380" y1="690" x2="110" y2="690" stroke="#1c252c" stroke-width="1.4" stroke-dasharray="7 5" marker-end="url(#aberta)"/>
+<text x="245.0" y="683" font-size="13.5" font-weight="400" text-anchor="middle" fill="#1c252c">mostra a ocorrência despachada</text>
+<line x1="50" y1="720" x2="1170" y2="720" stroke="#1c252c" stroke-width="1.4" stroke-dasharray="8 6"/>
+<text x="116" y="742" font-size="13.5" font-weight="700" text-anchor="start" fill="#1c252c">[nenhum técnico disponível]</text>
+<line x1="380" y1="778" x2="110" y2="778" stroke="#1c252c" stroke-width="1.4" stroke-dasharray="7 5" marker-end="url(#aberta)"/>
+<text x="245.0" y="771" font-size="13.5" font-weight="400" text-anchor="middle" fill="#1c252c">“Nenhum técnico disponível”</text>
+<text x="394" y="783" font-size="13" font-weight="400" text-anchor="start" fill="#5b6670">botão Despachar desativado</text>
+</svg>

@@ -8,3 +8,16 @@ Gestão de ocorrências de elevadores — Challenge OTIS · FIAP Engenharia de S
 - Melhorias com a Fase 7: [docs/superpowers/plans/2026-10-17-liftdesk-fase7-melhorias.md](docs/superpowers/plans/2026-10-17-liftdesk-fase7-melhorias.md)
 
 Grupo: Lucas, Pietro, Erick e João Victor.
+
+## Documentação
+
+- [Roteiro do vídeo](docs/roteiro-video.md)
+- [Backlog com MoSCoW](docs/backlog.md)
+
+### Diagrama de classes
+
+![Diagrama de classes do LiftDesk](docs/diagramas/diagrama-de-classes.png)
+
+### Diagrama de sequência: Despachar ocorrência
+
+![Diagrama de sequência do caso de uso Despachar ocorrência](docs/diagramas/diagrama-de-sequencia.png)
