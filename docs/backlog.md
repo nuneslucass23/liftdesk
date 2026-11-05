@@ -31,7 +31,7 @@ Situação em 04/11/2026.
 
 | ID | História | Quem | Situação | Como saber que está pronto |
 |---|---|---|---|---|
-| B17 | Como gestor, quero mensagens de erro claras na Nova ocorrência, para corrigir o preenchimento (react-hook-form + yup). | Erick | A fazer | O formulário vazio mostra as mensagens de erro |
+| B17 | Como gestor, quero mensagens de erro claras na Nova ocorrência, para corrigir o preenchimento (react-hook-form + yup). | Erick | Na main | O formulário vazio mostra as mensagens de erro |
 | B18 | Como gestor, quero cadastrar um elevador pelo CEP, para preencher o endereço mais rápido (ViaCEP). | João Victor | A fazer | O CEP `01310-100` preenche o endereço, e o elevador continua lá depois do F5 |
 | B19 | Como grupo, queremos diagramas de classes e de sequência, para mostrar a engenharia do MVP. | Pietro | Pronto para revisão | Os nomes dos diagramas são os mesmos do código |
 
