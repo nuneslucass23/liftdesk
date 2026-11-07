@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createHashRouter, RouterProvider } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './estilo.css'
 
 import App from './App.jsx'
 import Inicio from './paginas/Inicio.jsx'

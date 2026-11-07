@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { reiniciarDados } from "../dados.js"
 
 function Cabecalho() {
@@ -10,14 +10,16 @@ function Cabecalho() {
     }
 
     return (
-        <header className="bg-dark py-3 mb-4">
-            <div className="container d-flex flex-wrap align-items-center gap-3">
-                <Link to="/" className="text-white fw-bold text-decoration-none">LiftDesk</Link>
-                <Link to="/gestor" className="btn btn-outline-light">Painel</Link>
-                <Link to="/gestor/nova" className="btn btn-outline-light">Nova ocorrência</Link>
-                <Link to="/gestor/alertas" className="btn btn-outline-light">Alertas</Link>
-                <Link to="/tecnico" className="btn btn-outline-light">Minhas tarefas</Link>
-                <button className="btn btn-outline-light ms-auto" onClick={reiniciar}>Reiniciar demonstração</button>
+        <header className="topo">
+            <div className="container topo-conteudo">
+                <Link to="/" className="topo-marca">LiftDesk</Link>
+                <nav className="topo-menu" aria-label="Menu principal">
+                    <NavLink to="/gestor" end>Painel</NavLink>
+                    <NavLink to="/gestor/nova">Nova ocorrência</NavLink>
+                    <NavLink to="/gestor/alertas">Alertas</NavLink>
+                    <NavLink to="/tecnico">Minhas tarefas</NavLink>
+                </nav>
+                <button className="topo-reiniciar" onClick={reiniciar}>Reiniciar demonstração</button>
             </div>
         </header>
     )

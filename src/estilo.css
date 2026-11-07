@@ -1,0 +1,254 @@
+/* identidade visual: azul-marinho, cinza quente e detalhes em dourado */
+:root {
+    --marinho: #041e43;
+    --marinho-claro: #12325f;
+    --dourado: #b69c75;
+    --dourado-claro: #cdb791;
+    --cinza: #e8e6e5;
+    --linha: #d3d0cd;
+    --tinta: #1b2430;
+    --apagado: #566070;
+    --fonte-titulo: 'Source Serif 4', Georgia, serif;
+
+    --bs-body-font-family: 'Nunito Sans', system-ui, sans-serif;
+    --bs-body-color: var(--tinta);
+    --bs-link-color-rgb: 4, 30, 67;
+    --bs-link-hover-color-rgb: 18, 50, 95;
+    --bs-secondary-color: var(--apagado);
+}
+
+html,
+body {
+    overflow-x: clip;
+}
+
+body {
+    background: var(--cinza);
+}
+
+h1,
+h2,
+.h3,
+.h5 {
+    font-family: var(--fonte-titulo);
+    font-weight: 600;
+    color: var(--marinho);
+}
+
+/* botões retos, em caixa alta */
+.btn {
+    --bs-btn-border-radius: 0;
+    --bs-btn-font-weight: 800;
+    --bs-btn-font-size: 0.85rem;
+    --bs-btn-padding-x: 1.5rem;
+    --bs-btn-padding-y: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.btn-primary,
+.btn-dark {
+    --bs-btn-bg: var(--marinho);
+    --bs-btn-border-color: var(--marinho);
+    --bs-btn-hover-bg: var(--marinho-claro);
+    --bs-btn-hover-border-color: var(--marinho-claro);
+    --bs-btn-active-bg: var(--marinho-claro);
+    --bs-btn-active-border-color: var(--marinho-claro);
+    --bs-btn-disabled-bg: var(--marinho);
+    --bs-btn-disabled-border-color: var(--marinho);
+}
+
+.btn-outline-dark {
+    --bs-btn-color: var(--marinho);
+    --bs-btn-border-color: var(--marinho);
+    --bs-btn-hover-bg: var(--marinho);
+    --bs-btn-hover-border-color: var(--marinho);
+}
+
+.card {
+    --bs-card-border-radius: 0;
+    --bs-card-inner-border-radius: 0;
+    --bs-card-border-color: var(--linha);
+}
+
+.alert {
+    --bs-alert-border-radius: 0;
+}
+
+.badge {
+    --bs-badge-border-radius: 0;
+    letter-spacing: 0.03em;
+}
+
+.form-control,
+.form-select {
+    border-color: var(--linha);
+    border-radius: 0;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--marinho);
+    box-shadow: 0 0 0 0.2rem rgba(4, 30, 67, 0.2);
+}
+
+.form-label {
+    font-weight: 700;
+    color: var(--marinho);
+}
+
+.form-check-input:checked {
+    background-color: var(--marinho);
+    border-color: var(--marinho);
+}
+
+/* cabeçalho */
+.topo {
+    margin-bottom: 2rem;
+    padding-block: 1.1rem;
+    background: var(--marinho);
+}
+
+.topo-conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 2rem;
+}
+
+.topo-marca {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #fff;
+    text-decoration: none;
+}
+
+.topo-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.5rem;
+}
+
+.topo-menu a {
+    padding-block: 0.2rem;
+    border-bottom: 2px solid transparent;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+}
+
+.topo-menu a:hover,
+.topo-menu a.active {
+    border-bottom-color: var(--dourado);
+}
+
+.topo-reiniciar {
+    margin-left: auto;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--dourado-claro);
+}
+
+.topo-reiniciar:hover {
+    color: #fff;
+}
+
+.topo a:focus-visible,
+.topo-reiniciar:focus-visible {
+    outline: 2px solid var(--dourado-claro);
+    outline-offset: 3px;
+}
+
+/* tela inicial */
+.inicio-hero {
+    margin: -2rem calc(50% - 50vw) 0;
+    padding-block: clamp(3.5rem, 9vw, 6.5rem);
+    background: var(--marinho-claro);
+    color: #fff;
+    text-align: center;
+}
+
+.inicio-sobretitulo {
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--dourado-claro);
+}
+
+.inicio-hero h1 {
+    max-width: 22ch;
+    margin: 0 auto 2.25rem;
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    line-height: 1.15;
+    color: #fff;
+}
+
+.inicio-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.inicio-acoes .btn-gestor {
+    --bs-btn-color: var(--marinho);
+    --bs-btn-bg: var(--dourado-claro);
+    --bs-btn-border-color: var(--dourado-claro);
+    --bs-btn-hover-color: var(--marinho);
+    --bs-btn-hover-bg: #fff;
+    --bs-btn-hover-border-color: #fff;
+}
+
+.inicio-acoes .btn-tecnico {
+    --bs-btn-color: #fff;
+    --bs-btn-border-color: #fff;
+    --bs-btn-border-width: 2px;
+    --bs-btn-hover-color: var(--marinho);
+    --bs-btn-hover-bg: #fff;
+    --bs-btn-hover-border-color: #fff;
+}
+
+.inicio-losangos {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 2.5rem;
+}
+
+.inicio-losangos span {
+    width: 0.65rem;
+    height: 0.65rem;
+    border: 1.5px solid #fff;
+    transform: rotate(45deg);
+}
+
+.inicio-losangos span:last-child {
+    border-color: var(--dourado);
+    background: var(--dourado);
+}
+
+.inicio-recursos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 2rem;
+    padding-block: 3rem 1rem;
+}
+
+.inicio-recursos h2 {
+    margin-bottom: 0.4rem;
+    font-size: 1.5rem;
+}
+
+.inicio-recursos p {
+    margin: 0;
+}

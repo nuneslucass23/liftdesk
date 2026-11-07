@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { lerDados } from '../dados.js'
 import {
     estaAtrasada,
@@ -171,6 +171,7 @@ function Etapas({ status }) {
 }
 
 function Painel() {
+    const navigate = useNavigate()
     const [dados] = useState(lerDados())
     const [filtro, setFiltro] = useState('nao_resolvidas')
     const [agora, setAgora] = useState(() => Date.now())
@@ -262,9 +263,13 @@ function Painel() {
                                     const tecnico = tecnicos.find((t) => t.id === o.tecnicoId)
 
                                     return (
-                                        <tr key={o.id} className="position-relative">
+                                        <tr
+                                            key={o.id}
+                                            className="painel-linha"
+                                            onClick={() => navigate('/gestor/ocorrencia/' + o.id)}
+                                        >
                                             <td className="painel-celula-id">
-                                                <Link to={'/gestor/ocorrencia/' + o.id} className="stretched-link">{o.id}</Link>
+                                                <Link to={'/gestor/ocorrencia/' + o.id}>{o.id}</Link>
                                                 <span className={'badge ' + severidade.cor}>{severidade.texto}</span>
                                             </td>
                                             <td>
