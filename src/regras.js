@@ -75,4 +75,31 @@ export function sugerirTecnico(elevador, tecnicos, ocorrencias) {
 }
 
 // João Victor: devolve a lista de alertas (3+ eventos do mesmo tipo em 7 dias)
-export function gerarAlertas(elevadores, alertasTratados) { }
+export function gerarAlertas(elevadores, alertasTratados) {
+    const tratados = alertasTratados ?? []
+    const alertas = []
+
+    for (const elevador of elevadores) {
+        const contagem = {}
+
+        for (const evento of elevador.eventos ?? []) {
+            if (evento.diasAtras <= 7) {
+                contagem[evento.tipo] = (contagem[evento.tipo] || 0) + 1
+            }
+        }
+
+        for (const [tipo, quantidade] of Object.entries(contagem)) {
+            if (quantidade >= 3) {
+                alertas.push({
+                    id: elevador.id + '-' + tipo,
+                    elevadorId: elevador.id,
+                    tipo,
+                    quantidade,
+                    risco: quantidade >= 5 ? 'alto' : 'medio',
+                })
+            }
+        }
+    }
+
+    return alertas.filter((alerta) => !tratados.includes(alerta.id))
+}
