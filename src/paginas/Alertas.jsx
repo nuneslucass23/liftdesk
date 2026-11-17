@@ -10,25 +10,31 @@ const TIPOS = {
     ruido: 'ruído',
 }
 
+// monta a ocorrência preventiva fora do componente (igual ao montarOcorrencia da Nova ocorrência)
+function montarPreventiva(alerta, elevador) {
+    const agora = Date.now()
+
+    return {
+        id: 'OC-' + agora,
+        elevadorId: alerta.elevadorId,
+        tipo: 'preventiva',
+        descricao: `Manutenção preventiva: ${alerta.quantidade} anomalias de ${TIPOS[alerta.tipo] ?? alerta.tipo} nos últimos 7 dias no ${elevador?.predio ?? alerta.elevadorId}.`,
+        passageiroPreso: false,
+        severidade: 'baixa',
+        status: 'aberta',
+        tecnicoId: null,
+        criadaEm: agora,
+        observacao: '',
+    }
+}
+
 function Alertas() {
     const [dados, setDados] = useState(lerDados)
     const alertas = gerarAlertas(dados.elevadores, dados.alertasTratados)
 
     function gerarManutencao(alerta) {
-        const agora = Date.now()
         const elevador = dados.elevadores.find((item) => item.id === alerta.elevadorId)
-        const novaOcorrencia = {
-            id: 'OC-' + agora,
-            elevadorId: alerta.elevadorId,
-            tipo: 'preventiva',
-            descricao: `Manutenção preventiva: ${alerta.quantidade} anomalias de ${TIPOS[alerta.tipo] ?? alerta.tipo} nos últimos 7 dias no ${elevador?.predio ?? alerta.elevadorId}.`,
-            passageiroPreso: false,
-            severidade: 'baixa',
-            status: 'aberta',
-            tecnicoId: null,
-            criadaEm: agora,
-            observacao: '',
-        }
+        const novaOcorrencia = montarPreventiva(alerta, elevador)
         const novosDados = {
             ...dados,
             ocorrencias: [novaOcorrencia, ...dados.ocorrencias],
